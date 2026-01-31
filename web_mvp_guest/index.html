@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 혜택 분석 MVP</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Home Screen (Default) -->
+            <section id="home-screen" class="screen active">
+                <header class="header"
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="month-selector">
+                        <span class="current-month">12월</span>
+                        <img src="assets/icons/dropdown_arrow.svg" alt="dropdown" class="icon-dropdown">
+                    </div>
+                    <button class="btn-login"
+                        style="background: none; border: 1px solid #ddd; padding: 4px 12px; border-radius: 20px; font-size: 13px; color: #757575;">로그인</button>
+                </header>
+
+                <div class="banner-guide" onclick="app.navigateTo('category-conditions')">
+                    <div class="banner-text">
+                        <p class="subtitle">혜택 구조 헷갈린다면?</p>
+                        <h2 class="title">카테고리별 상세 조건 확인하기</h2>
+                    </div>
+                    <img src="assets/images/credit_card_coins.png" alt="guide" class="banner-img">
+                </div>
+
+                <div class="card-section">
+                    <div class="guest-cta-container"
+                        style="padding: 20px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <div style="background: #FAFAFB; border: 1px dashed #D9D9D9; border-radius: 15px; padding: 25px; text-align: center; cursor: pointer;"
+                            onclick="app.navigateTo('card-registration')">
+                            <span style="font-size: 24px; display: block; margin-bottom: 8px;">💳</span>
+                            <span style="font-weight: 700; color: #333;">가지고 계신 카드를 등록해주세요</span>
+                        </div>
+                        <div style="background: #F3EEFF; border: 1px solid #E9E0FF; border-radius: 15px; padding: 25px; text-align: center; cursor: pointer;"
+                            onclick="app.navigateTo('upload')">
+                            <span style="font-size: 24px; display: block; margin-bottom: 8px;">📄</span>
+                            <span style="font-weight: 700; color: var(--primary-purple);">명세서를 등록하고 혜택을 분석하세요</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-banner" onclick="app.navigateTo('upload')">
+                    <div class="recommend-text">
+                        <h3>나와 맞는 카드로 바꾸고<br>새로운 혜택 받으러 가기</h3>
+                        <span class="badge-link">바로보기</span>
+                    </div>
+                    <img src="assets/images/receipt_card.png" alt="receipt" class="recommend-img">
+                </div>
+
+                <div class="received-benefits-card">
+                    <div class="section-header">
+                        <span class="label">받은 혜택</span>
+                        <span class="value">28,000원</span>
+                    </div>
+                    <div class="benefit-list">
+                        <!-- Dynamic Benefit Items -->
+                    </div>
+                    <div class="divider"></div>
+                    <button class="btn-text" onclick="app.navigateTo('details')">자세히 보기</button>
+                </div>
+
+                <div class="performance-card">
+                    <div class="section-header">
+                        <span class="label">카드실적</span>
+                        <div class="value-group">
+                            <span class="value">323,000원</span>
+                            <img src="assets/icons/chevron_right_small.svg" alt="more" class="icon-chevron">
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <span class="sub-label">사용금액 447,261원</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Screen -->
+            <section id="upload-screen" class="screen">
+                <header class="header-back">
+                    <button class="btn-back" onclick="app.navigateTo('home')">
+                        <img src="assets/icons/back_arrow.png" alt="back">
+                    </button>
+                </header>
+                <div class="upload-container">
+                    <h1>명세서 업로드</h1>
+                    <p>카드사별 명세서(CSV, XLS, PDF, JPG)를 업로드하여<br>정밀한 혜택 분석을 시작하세요.</p>
+
+                    <div class="card-company-selector">
+                        <div class="company-item" onclick="app.selectCompany('samsung')">
+                            <img src="assets/images/samsung_card_logo.png" alt="삼성카드">
+                            <span>삼성카드</span>
+                        </div>
+                    </div>
+
+                    <div id="file-upload-area" class="upload-area">
+                        <img src="assets/icons/upload.svg" alt="upload" class="icon-upload">
+                        <p>명세서 파일 선택 (CSV, XLS, PDF, JPG)</p>
+                        <input type="file" id="csv-upload" accept=".csv, .xls, .xlsx, .pdf, .jpg, .jpeg" hidden>
+                        <button class="btn-primary" onclick="document.getElementById('csv-upload').click()">파일
+                            찾기</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Report Screen -->
+            <section id="report-screen" class="screen">
+                <!-- Content will be dynamically injected -->
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="app.navigateTo('home')">
+                <img src="assets/icons/nav_home.svg" alt="home">
+                <span>홈</span>
+            </div>
+            <div class="nav-item" onclick="app.navigateTo('upload')">
+                <img src="assets/icons/nav_card.svg" alt="card">
+                <span>카드전환</span>
+            </div>
+            <div class="nav-item">
+                <img src="assets/icons/nav_profile.svg" alt="profile">
+                <span>내정보</span>
+            </div>
+        </nav>
+    </div>
+
+    <script src="analysis_engine.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

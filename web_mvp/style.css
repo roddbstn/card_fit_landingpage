@@ -1,0 +1,466 @@
+:root {
+    --primary-purple: #874FFF;
+    --bg-gradient-start: #F3EEFF;
+    --bg-gradient-mid: #F3F3F3;
+    --bg-gradient-end: #DCCCFF;
+    --white: #FAFAF8;
+    --gray-bg: #F5F5F5;
+    --text-black: #222222;
+    --text-dark: #1E1E1E;
+    --text-gray: #757575;
+    --accent-red: #EB5E59;
+    --accent-red-bg: #FFE9E8;
+    --divider: #F1F1F1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', sans-serif;
+}
+
+body {
+    background-color: #ddd;
+    /* Browser background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#app {
+    width: 390px;
+    height: 844px;
+    background: linear-gradient(180deg, var(--bg-gradient-start) 13.94%, var(--bg-gradient-mid) 52.4%, var(--bg-gradient-end) 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    height: calc(100% - 80px);
+    /* Subtract bottom nav height */
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    padding-top: 60px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Header */
+.header {
+    margin-bottom: 12px;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.current-month {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-black);
+}
+
+.icon-dropdown {
+    width: 14px;
+}
+
+/* Guide Banner */
+.banner-guide {
+    background-color: #E9E0FF;
+    border-radius: 13px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.banner-text .subtitle {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+}
+
+.banner-text .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black);
+}
+
+.banner-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
+/* Card Section */
+.card-section {
+    background-color: var(--white);
+    border-radius: 13px;
+    padding: 20px;
+    margin-bottom: 12px;
+}
+
+.card-info {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.card-thumbnail {
+    width: 40px;
+    height: 62px;
+    border: 0.5px solid #979797;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.card-details {
+    flex: 1;
+}
+
+.card-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black);
+}
+
+.card-tag {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+.icon-menu {
+    width: 4px;
+}
+
+.benefit-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.badge-missed {
+    background-color: var(--accent-red-bg);
+    color: var(--accent-red);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.amount-missed {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-black);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.action-buttons button {
+    flex: 1;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-purple);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--primary-purple);
+    color: var(--white);
+}
+
+/* Recommendation Banner */
+.recommendation-banner {
+    background-color: var(--white);
+    border-radius: 13px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.recommend-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.badge-link {
+    background-color: #E9E0FF;
+    color: var(--primary-purple);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.recommend-img {
+    width: 115px;
+}
+
+/* Received Benefits Card */
+.received-benefits-card,
+.performance-card {
+    background-color: var(--white);
+    border-radius: 13px;
+    padding: 20px;
+    margin-bottom: 12px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header .label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-gray);
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.cat-icon {
+    width: 33px;
+    height: 33px;
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-info .spent {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.item-info .cat-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.dots-sep {
+    width: 22px;
+    height: 8px;
+    background-image: url('assets/icons/dots_separator.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.item-benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.item-benefit .label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary-purple);
+}
+
+.item-benefit .val {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-purple);
+}
+
+/* Report Screen Styles */
+.report-header {
+    margin-bottom: 50px;
+}
+
+.highlight-red {
+    color: var(--accent-red);
+    font-weight: 800;
+}
+
+.card-display {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.card-display h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-black);
+    margin-bottom: 15px;
+}
+
+.card-large {
+    width: 135px;
+    height: 214px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.btn-large {
+    width: 284px;
+    height: 51px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary-purple);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Upload Area */
+.upload-area {
+    margin-top: 40px;
+    border: 2px dashed #DCCCFF;
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.icon-upload {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
+}
+
+.card-company-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.company-item {
+    background-color: var(--white);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.company-item:hover {
+    transform: scale(1.05);
+}
+
+.company-item img {
+    height: 30px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 20px;
+    /* Space for home indicator */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #979797;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: var(--primary-purple);
+}
+
+.nav-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item span {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* Scrollbar */
+main::-webkit-scrollbar {
+    display: none;
+}
